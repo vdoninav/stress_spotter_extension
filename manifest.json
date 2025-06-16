@@ -1,0 +1,33 @@
+{
+  "manifest_version": 3,
+  "name": "Словарь ударений",
+  "version": "1.0",
+  "description": "Подсветка русских слов с нормативным ударением во всплывающей подсказке.",
+  "icons": {
+    "128": "icons/icon128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content_script.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["data/stress_dictionary.json"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icons/icon128.png"
+  }
+}
